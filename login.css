@@ -1,0 +1,18 @@
+/* .form{
+    background-color: yellow;
+    position: absolute;
+    display: flex;
+    
+} */
+
+.form {
+    background-color: rgb(113, 102, 102);
+    position: absolute;
+    top: 50%; /* Positions the top of the form at the vertical center */
+    left: 50%; /* Positions the left side of the form at the horizontal center */
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+.submit{
+    margin: auto;
+}

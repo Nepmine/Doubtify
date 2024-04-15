@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input[type="button"], input[type="submit"]{
+    cursor: pointer;
+}
+.container
+{
+    height: 100vh;
+    width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+.form {
+    visibility: hidden;
+    
+    background-color: rgb(95, 93, 85);
+    position: absolute;
+    top: 50%; /* Positions the top of the form at the vertical center */
+    left: 50%; /* Positions the left side of the form at the horizontal center */
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+
+.blacky{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    visibility: hidden;
+}
