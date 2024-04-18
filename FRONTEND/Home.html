@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doubtify</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f4f4f4;
+}
+.navbar {
+background-color: #333;
+color: #fff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+}
+
+
+    .navbar-brand {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-responses {
+        margin-right: 20px;
+    }
+
+    .navbar-profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .navbar-profile img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    .profile-settings {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+    }
+
+    .profile-settings.show {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        width: 250px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar-expert {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .sidebar-expert img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .responses {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .responses-count {
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+
+    .upload-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .upload-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .upload-btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .upload-btn:hover {
+        background-color: #0056b3;
+    }
+  .expert-profile {
+        position: absolute;
+        left: 270px;
+        top: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 5px;
+        display: none;
+        z-index: 1;
+    }
+
+    .sidebar-expert:hover .expert-profile {
+        display: block;
+    }
+
+    .expert-profile img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .expert-profile h4 {
+        margin-bottom: 5px;
+    }
+
+    .expert-profile p {
+        margin: 0;
+        font-size: 14px;
+        color: #666;
+    }
+  .response-list {
+        position: absolute;
+        top: 60px;
+        right: 180px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 5px;
+        display: none;
+        z-index: 1;
+        width: 300px;
+    }
+
+    .response-list.show {
+        display: block;
+    }
+
+    .response-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .response-item img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .response-item h4 {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .response-item p {
+        margin: 0;
+        font-size: 14px;
+        color: #666;
+    }
+  .rating {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .rating .star {
+        color: #ffc107;
+        margin-right: 2px;
+    }
+</style>    
+
+
+
+</head>
+<body>
+<div class="background-particles"></div>
+<nav class="navbar">
+<div class="navbar-brand">Doubtify</div>
+<div class="navbar-right">
+<div class="navbar-responses">
+<span class="responses-count"><i class="fas fa-comment-alt"></i> 2</span>
+</div>
+<div class="navbar-profile">
+<img src="https://via.placeholder.com/30" alt="Profile">
+<span>John Doe</span>
+</div>
+</div>
+</nav>
+<div class="container">
+<div class="sidebar">
+<h3>Experts</h3>
+<div class="sidebar-expert">
+<img src="https://via.placeholder.com/40" alt="Expert">
+<span>Expert 1</span>
+<div class="expert-profile">
+<img src="https://via.placeholder.com/80" alt="Expert 1">
+<h4>Expert 1</h4>
+<p>Expert in Web Development</p>
+<p>Experience: 5 years</p>
+<p>Rating: 4.8/5</p>
+</div>
+</div>
+<div class="sidebar-expert">
+<img src="https://via.placeholder.com/40" alt="Expert">
+<span>Expert 2</span>
+<div class="expert-profile">
+<img src="https://via.placeholder.com/80" alt="Expert 2">
+<h4>Expert 2</h4>
+<p>Expert in Data Science</p>
+<p>Experience: 3 years</p>
+<p>Rating: 4.6/5</p>
+</div>
+</div>
+<div class="sidebar-expert">
+<img src="https://via.placeholder.com/40" alt="Expert">
+<span>Expert 3</span>
+<div class="expert-profile">
+<img src="https://via.placeholder.com/80" alt="Expert 3">
+<h4>Expert 3</h4>
+<p>Expert in Mobile Development</p>
+<p>Experience: 4 years</p>
+<p>Rating: 4.9/5</p>
+</div>
+</div>
+</div>
+<div class="main">
+<div class="responses">
+
+
+        </div>
+        <div class="upload-container">
+            <h2>Upload your query</h2>
+            <a href="#" class="upload-btn">Write it all !!</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="profile-settings">
+<h3>Profile Settings</h3>
+<p>Update your profile information.</p>
+<!-- Add profile settings form or options here -->
+</div>
+<div class="response-list">
+<h3>Expert Bids</h3>
+<div class="response-item">
+<img src="https://via.placeholder.com/40" alt="Expert 1">
+<div>
+<h4>Expert 1</h4>
+<p>Bid: $50</p>
+<div class="rating">
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star-half-alt"></i></span>
+<span>4.5</span>
+</div>
+</div>
+</div>
+<div class="response-item">
+<img src="https://via.placeholder.com/40" alt="Expert 2">
+<div>
+<h4>Expert 2</h4>
+<p>Bid: $75</p>
+<div class="rating">
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span class="star"><i class="fas fa-star"></i></span>
+<span>5.0</span>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+   const profileSettings = document.querySelector('.profile-settings');
+    const navbarProfile = document.querySelector('.navbar-profile');
+    const responseList = document.querySelector('.response-list');
+    const responseCount = document.querySelector('.responses-count');
+
+    navbarProfile.addEventListener('click', () => {
+        profileSettings.classList.toggle('show');
+    });
+
+    responseCount.addEventListener('click', () => {
+        responseList.classList.toggle('show');
+    });
+</script>
+
+
+
+</body>
+</html>

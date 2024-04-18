@@ -26,8 +26,7 @@
 
 
 
-    <form style="margin:auto; visiblity:visible !important;" action="expert_fillprocess.php" class="form" method="post"
-        id="expert_fill"> <!-- process.php -->
+    <form style="margin:auto; visiblity:visible !important;" action="expert_fillprocess.php" class="form" method="post" id="expert_fill"> 
 
         <div style="border:2px solid black">
 
@@ -101,7 +100,7 @@
             <center>
                 <tr>
                     <td>
-                        <input type="submit" value="Submit" name="expertSubmit" class="submit" onsubmit="">
+                        <input type="submit" value="Submit" name="expertSubmit" class="submit">
                     </td>
                 </tr>
             </center>

@@ -4,13 +4,15 @@ session_start();
 
 
 include 'connectivity.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-                                                    //      [For skills storage]
+    echo "Hello   ";
+
+    //      [For skills storage]
     // real maal
 //     $selected_skills = $_POST['skills'];
 
-//     $uname="Suraj1";
+    //     $uname="Suraj1";
 //     // $uname=$_SESSION[$username];              <------------------username exists here
 //     // print_r($selected_skills);
 //     foreach ($selected_skills as $skl) {
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-$selected_skills = $_POST['skills'];
+    $selected_skills = $_POST['skills'];
     $uname = "Suraj";
 
     // Establish a database connection
@@ -42,7 +44,7 @@ $selected_skills = $_POST['skills'];
         $skill = $skl; // Set the parameter value
 
         // Execute the statement and check for errors
-        $check="select skills from skills where username='$uname' and skills='$skl'";
+        $check = "select skills from skills where username='$uname' and skills='$skl'";
         $checkdub = $connection->query($check);
         if (!$checkdub->num_rows) {
             if (!$stmt->execute()) {
@@ -56,45 +58,45 @@ $selected_skills = $_POST['skills'];
 
 
 
-                                                    //      [For the rest of the form]
+    //      [For the rest of the form]
+    // echo "Hello   ";
 
-    
 
-                                                    
-//     $file_name=$_FILES['profileImage']['name'];
-//     // $query="insert into expert values('$file_name')";
 
-//     $template=$_FILES['profileImage']['temp_name'];
-//     $folder='Images/'.$file_name;
-//     if(!move_uploaded_file($template,$folder))
-//     {
-//         echo "Image not uploaded !! <br>";
-//     }
+    $file_name = $_FILES['profileImage']['name'];
+    // $query="insert into expert values('$file_name')";
 
+    $template = $_FILES['profileImage']['temp_name'];
+    $folder = 'Images/' . $file_name;
+    if (!move_uploaded_file($template, $folder)) {
+        echo "Image not uploaded !! <br>";
+    }
 
 
 
 
 
 
+    echo "hay you !!";
 
+    $bio = $_POST['bio'];
+    $describe = $_POST['describe'];
+    $exportfolio = $_POST['exportfolio'];
+    $profession = $_POST['profession'];
 
-
-//     $bio=$_POST['bio'];
-//     $describe=$_POST['describe'];
-//     $exportfolio=$_POST['exportfolio'];
-//     $profession=$_POST['profession'];
-
-//     if(empty($bio) || empty($explink))
-//     {
-//         header("Location: login.php");
-//         exit(0);
-//     }
-//     $sql2="insert into signup values('$file_name','$bio','$describe','$exportfolio','$profession');";
-//     if(mysqli_query($connection,$sql2))
-//     echo"<script>alert('Data Inserted')</script>";
-//     else
-//     echo"<script>alert('Data not inserted')</script>";
-//  mysqli_close($connection);
+    if (!empty($bio) || !empty($explink)) {
+        header("Location: expert_fillprocess.php");
+        echo "You missed some points";
+        exit(0);
+    }
+    $sql2 = "insert into signup values('$uname','$file_name','$bio','$describe','$exportfolio','$profession');";
+    if (mysqli_query($connection, $sql2))
+        echo "<script>alert('Data Inserted')</script>";
+    else
+        echo "<script>alert('Data not inserted')</script>";
+    mysqli_close($connection);
 }
- 
+else{
+    echo "you are out of post method";
+}
+
